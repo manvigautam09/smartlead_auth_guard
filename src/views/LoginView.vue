@@ -1,6 +1,9 @@
 <template>
   <div class="login">
     <h1>Login</h1>
+    <div v-if="error" class="error">
+      {{ error }}
+    </div>
     <form @submit.prevent="handleLogin">
       <div>
         <label for="email">Email:</label>
@@ -10,8 +13,11 @@
         <label for="password">Password:</label>
         <input type="password" id="password" v-model="password" required />
       </div>
-      <button type="submit">Login</button>
+      <button type="submit" :disabled="loading">
+        {{ loading ? "Logging in..." : "Login" }}
+      </button>
     </form>
+    <p class="hint">Try: user@example.com / password123</p>
   </div>
 </template>
 
@@ -22,12 +28,26 @@ export default {
     return {
       email: "",
       password: "",
+      error: "",
+      loading: false,
     };
   },
   methods: {
-    handleLogin() {
-      // Add login logic here
-      console.log("Login attempted:", this.email);
+    async handleLogin() {
+      this.loading = true;
+      this.error = "";
+
+      try {
+        await this.$store.dispatch("login", {
+          email: this.email,
+          password: this.password,
+        });
+        this.$router.push("/dashboard");
+      } catch (error) {
+        this.error = error;
+      } finally {
+        this.loading = false;
+      }
     },
   },
 };
@@ -60,5 +80,16 @@ button {
   padding: 0.5rem 1rem;
   border: none;
   cursor: pointer;
+}
+
+.error {
+  color: red;
+  margin-bottom: 1rem;
+}
+
+.hint {
+  margin-top: 1rem;
+  color: #666;
+  font-size: 0.9rem;
 }
 </style>
