@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <nav v-if="isAuthenticated">
     <router-link to="/login">Login</router-link> |
     <router-link to="/dashboard">Dashboard</router-link>
   </nav>
@@ -9,6 +9,14 @@
 <script>
 export default {
   name: "App",
+  computed: {
+    isAuthenticated() {
+      return this.$store.getters.isAuthenticated;
+    },
+  },
+  async created() {
+    await this.$store.dispatch("checkAuth");
+  },
 };
 </script>
 

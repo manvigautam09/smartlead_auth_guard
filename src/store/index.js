@@ -1,4 +1,5 @@
 import { createStore } from "vuex";
+import { setCookie, getCookie, removeCookie } from "../utils/cookies";
 
 // Simulated user database
 const users = [
@@ -32,12 +33,30 @@ export default createStore({
         // Create a sanitized user object without the password
         const userWithoutPassword = { email: user.email };
         commit("setUser", userWithoutPassword);
+
+        // Set authentication cookie
+        setCookie("auth_token", JSON.stringify(userWithoutPassword));
         return Promise.resolve(true);
       }
       return Promise.reject("Invalid credentials");
     },
     logout({ commit }) {
       commit("clearUser");
+      removeCookie("auth_token");
+    },
+    checkAuth({ commit }) {
+      const authCookie = getCookie("auth_token");
+      if (authCookie) {
+        try {
+          const user = JSON.parse(authCookie);
+          commit("setUser", user);
+          return true;
+        } catch (e) {
+          removeCookie("auth_token");
+          return false;
+        }
+      }
+      return false;
     },
   },
   getters: {

@@ -28,7 +28,9 @@ const router = createRouter({
 });
 
 // Navigation guards
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
+  // Check authentication status from cookie
+  await store.dispatch("checkAuth");
   const isAuthenticated = store.getters.isAuthenticated;
 
   if (to.meta.requiresAuth && !isAuthenticated) {
