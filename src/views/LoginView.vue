@@ -1,22 +1,17 @@
 <template>
   <div class="login">
+    <div class="header">
+      <img src="@/assets/logo.svg" alt="Smartlead.ai" />
+      <img src="@/assets/banner.svg" alt="banner" class="left-margin" />
+    </div>
     <div class="login-container">
-      <div class="logo">
-        <img src="@/assets/logo.svg" alt="Smartlead.ai" />
-      </div>
       <h1>Welcome to Smartlead.ai</h1>
       <p class="subtitle">Log in to your account</p>
 
       <form @submit.prevent="handleLogin">
         <div class="form-group">
-          <label for="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            v-model="email"
-            required
-            placeholder="Grace Silva"
-          />
+          <label class="email-label" for="email">Email</label>
+          <input type="email" id="email" v-model="email" required />
         </div>
 
         <div class="form-group">
@@ -88,11 +83,29 @@ export default {
 
 <style scoped>
 .login {
-  min-height: 100vh;
+  height: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  background-color: #f8f9fd;
+  background-color: #f7f8fe;
+}
+
+.header {
+  background-color: #00056a;
+  height: 80px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 20px;
+}
+
+.left-margin {
+  margin-left: 10px;
+}
+
+.email-label {
+  display: flex;
+  justify-content: flex-start;
 }
 
 .login-container {
@@ -103,6 +116,7 @@ export default {
   width: 100%;
   max-width: 440px;
   margin: 20px;
+  margin-top: 8%;
 }
 
 .logo {
