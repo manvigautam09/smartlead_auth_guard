@@ -32,18 +32,16 @@
     <div class="content">
       <aside class="sidebar">
         <nav class="nav-list">
-          <a href="#" class="nav-item active">
-            <img src="@/assets/leads.svg" alt="" />
-            <span>All Leads</span>
-          </a>
-          <a href="#" class="nav-item">
-            <img src="@/assets/inbox.svg" alt="" />
-            <span>Master Inbox</span>
-          </a>
-          <a href="#" class="nav-item">
-            <img src="@/assets/campaigns.svg" alt="" />
-            <span>Email Campaigns</span>
-          </a>
+          <button
+            v-for="tab in tabs"
+            :key="tab.id"
+            class="nav-item"
+            :class="{ active: currentTab === tab.id }"
+            @click="currentTab = tab.id"
+          >
+            <img :src="require(`@/assets/${tab.icon}`)" alt="" />
+            <span>{{ tab.name }}</span>
+          </button>
         </nav>
 
         <div>
@@ -65,7 +63,7 @@
       </aside>
 
       <main class="main-content">
-        <div class="welcome-section">
+        <div v-if="currentTab === 'leads'" class="welcome-section">
           <h1>Get Free New Contacts and Leads</h1>
           <p>
             Scrape verified emails straight from LinkedIn using our Sales
@@ -78,6 +76,16 @@
             class="illustration"
           />
           <button class="add-chrome-btn">Add to Chrome</button>
+        </div>
+
+        <div v-else-if="currentTab === 'inbox'" class="tab-content">
+          <h1>Master Inbox</h1>
+          <p>Master Inbox content coming soon...</p>
+        </div>
+
+        <div v-else-if="currentTab === 'campaigns'" class="tab-content">
+          <h1>Email Campaigns</h1>
+          <p>Email Campaigns content coming soon...</p>
         </div>
       </main>
     </div>
@@ -95,6 +103,24 @@ export default {
   data() {
     return {
       showBanner: localStorage.getItem("showBanner") === "true",
+      currentTab: "leads",
+      tabs: [
+        {
+          id: "leads",
+          name: "All Leads",
+          icon: "leads.svg",
+        },
+        {
+          id: "inbox",
+          name: "Master Inbox",
+          icon: "inbox.svg",
+        },
+        {
+          id: "campaigns",
+          name: "Email Campaigns",
+          icon: "campaigns.svg",
+        },
+      ],
     };
   },
   methods: {
@@ -199,6 +225,11 @@ export default {
   font-size: 14px;
   margin: 0px;
   font-weight: 400;
+  width: 100%;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
 }
 
 .nav-item.active {
@@ -262,5 +293,21 @@ export default {
 
 .add-chrome-btn:hover {
   background-color: #5a47d6;
+}
+
+.tab-content {
+  padding: 40px;
+  text-align: center;
+}
+
+.tab-content h1 {
+  font-size: 24px;
+  color: #1a1a1a;
+  margin-bottom: 16px;
+}
+
+.tab-content p {
+  color: #666;
+  font-size: 16px;
 }
 </style>
