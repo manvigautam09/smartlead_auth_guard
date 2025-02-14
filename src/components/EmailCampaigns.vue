@@ -113,13 +113,13 @@
 </template>
 
 <script>
-import { campaigns } from "@/constants/campaigns";
+import { getCampaigns } from "@/constants/campaigns";
 
 export default {
   name: "EmailCampaigns",
   data() {
     return {
-      campaigns,
+      campaigns: getCampaigns(),
     };
   },
 };
@@ -130,10 +130,13 @@ export default {
   padding: 24px;
   background: #fff;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .campaigns-header {
   margin-bottom: 24px;
+  flex-shrink: 0; /* Prevent header from shrinking */
 }
 
 .title-section {
@@ -199,6 +202,7 @@ export default {
   padding: 16px 24px;
   border-bottom: 1px solid #e5e7eb;
   align-items: center;
+  background: #fff; /* Ensure white background when scrolling */
 }
 
 .campaign-info {
@@ -300,5 +304,11 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.campaigns-list {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0; /* Important for Firefox */
 }
 </style>
