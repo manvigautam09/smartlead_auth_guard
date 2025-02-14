@@ -47,11 +47,17 @@
         </nav>
 
         <div>
-          <a href="#" class="nav-item">
+          <a
+            href="https://www.figma.com/design/2bjRuWFE7DWiZMckXWVews/Smartlead-Tech-Test?node-id=37-7672&t=i5zUFzddeu4BPupf-0"
+            class="nav-item"
+          >
             <img src="@/assets/slack.svg" alt="" />
             <span>Join Slack Community</span>
           </a>
-          <a href="#" class="nav-item">
+          <a
+            href="https://www.figma.com/design/2bjRuWFE7DWiZMckXWVews/Smartlead-Tech-Test?node-id=37-7672&t=i5zUFzddeu4BPupf-0"
+            class="nav-item"
+          >
             <img src="@/assets/tutorials.svg" alt="" />
             <span>Smartlead Tutorials</span>
           </a>
