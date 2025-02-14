@@ -39,7 +39,7 @@
             :class="{ active: currentTab === tab.id }"
             @click="currentTab = tab.id"
           >
-            <img :src="require(`@/assets/${tab.icon}`)" alt="" />
+            <img :src="require(`@/assets/${tab.icon}`)" :alt="tab.id" />
             <span>{{ tab.name }}</span>
           </button>
         </nav>
