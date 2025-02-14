@@ -4,7 +4,14 @@
       <div class="title-section">
         <h1>All Campaigns ({{ campaigns.length }})</h1>
         <div class="search-box">
-          <input type="text" placeholder="Search Campaigns" />
+          <div class="search-input">
+            <img src="@/assets/search.svg" alt="Search" class="search-icon" />
+            <input
+              type="text"
+              placeholder="Search Campaigns"
+              class="search-input-tag"
+            />
+          </div>
           <button class="add-campaign">+ Add Campaign</button>
         </div>
       </div>
@@ -157,12 +164,35 @@ export default {
   gap: 16px;
 }
 
-.search-box input {
+.search-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input-tag:focus {
+  outline: none;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  width: 20px;
+  height: 20px;
+  color: #686b8a;
+}
+
+.search-input input {
   width: 240px;
-  padding: 8px 16px;
+  padding: 8px 16px 8px 40px;
   border: 1px solid #e5e7eb;
   border-radius: 5px;
   font-size: 14px;
+  color: #686b8a;
+}
+
+.search-input input::placeholder {
+  color: #686b8a;
 }
 
 .add-campaign {
@@ -176,7 +206,8 @@ export default {
 }
 
 .table-container {
-  padding: 27px;
+  padding: 20px;
+  background: #f7f8fe;
 }
 
 .table-header {
