@@ -250,6 +250,7 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: #f7f8fe;
 }
 
 .welcome-section {

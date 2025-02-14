@@ -8,7 +8,8 @@
           <button class="add-campaign">+ Add Campaign</button>
         </div>
       </div>
-
+    </div>
+    <div class="table-container">
       <div class="table-header">
         <div class="checkbox-col">
           <input type="checkbox" />
@@ -16,95 +17,95 @@
         <div class="details-col">Campaign Details</div>
         <div class="report-col">Report</div>
       </div>
-    </div>
 
-    <div class="campaigns-list">
-      <div
-        v-for="campaign in campaigns"
-        :key="campaign.id"
-        class="campaign-row"
-      >
-        <div class="checkbox-col">
-          <input type="checkbox" />
-        </div>
+      <div class="campaigns-list">
+        <div
+          v-for="campaign in campaigns"
+          :key="campaign.id"
+          class="campaign-row"
+        >
+          <div class="checkbox-col">
+            <input type="checkbox" />
+          </div>
 
-        <div class="details-col">
-          <div class="campaign-info">
-            <div class="progress-circle" :data-progress="campaign.progress">
-              {{ campaign.progress }}%
-            </div>
-            <div class="campaign-details">
-              <div class="campaign-name">
-                {{ campaign.name }}
-                <img src="@/assets/external-link.svg" alt="Open" />
+          <div class="details-col">
+            <div class="campaign-info">
+              <div class="progress-circle" :data-progress="campaign.progress">
+                {{ campaign.progress }}%
               </div>
-              <div class="campaign-meta">
-                {{ campaign.status }} on {{ campaign.date }} |
-                {{ campaign.sequences }} Sequences
+              <div class="campaign-details">
+                <div class="campaign-name">
+                  {{ campaign.name }}
+                  <img src="@/assets/external-link.svg" alt="Open" />
+                </div>
+                <div class="campaign-meta">
+                  {{ campaign.status }} on {{ campaign.date }} |
+                  {{ campaign.sequences }} Sequences
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="report-col">
-          <div class="metrics">
-            <div class="metric">
-              <span class="value">{{ campaign.metrics.sent }}</span>
-              <span class="label">Sent</span>
+          <div class="report-col">
+            <div class="metrics">
+              <div class="metric">
+                <span class="value">{{ campaign.metrics.sent }}</span>
+                <span class="label">Sent</span>
+              </div>
+              <div class="metric">
+                <span class="value highlight-purple">{{
+                  campaign.metrics.clicked.value
+                }}</span>
+                <span class="label"
+                  >Clicked
+                  <span class="percentage"
+                    >{{ campaign.metrics.clicked.percentage }}%</span
+                  ></span
+                >
+              </div>
+              <div class="metric">
+                <span class="value highlight-pink">{{
+                  campaign.metrics.opened.value
+                }}</span>
+                <span class="label"
+                  >Opened
+                  <span class="percentage"
+                    >{{ campaign.metrics.opened.percentage }}%</span
+                  ></span
+                >
+              </div>
+              <div class="metric">
+                <span class="value highlight-blue">{{
+                  campaign.metrics.replied.value
+                }}</span>
+                <span class="label"
+                  >Replied
+                  <span class="percentage"
+                    >{{ campaign.metrics.replied.percentage }}%</span
+                  ></span
+                >
+              </div>
+              <div class="metric">
+                <span class="value highlight-green">{{
+                  campaign.metrics.positive.value
+                }}</span>
+                <span class="label"
+                  >Positive Reply
+                  <img src="@/assets/info.svg" alt="Info" />
+                </span>
+              </div>
             </div>
-            <div class="metric">
-              <span class="value highlight-purple">{{
-                campaign.metrics.clicked.value
-              }}</span>
-              <span class="label"
-                >Clicked
-                <span class="percentage"
-                  >{{ campaign.metrics.clicked.percentage }}%</span
-                ></span
-              >
+            <div class="actions">
+              <button class="action-btn">
+                <img src="@/assets/info-circle.svg" alt="Info" />
+              </button>
+              <button class="action-btn">
+                <img src="@/assets/edit.svg" alt="Edit" />
+              </button>
+              <button class="action-btn">
+                <img src="@/assets/more.svg" alt="More" />
+              </button>
             </div>
-            <div class="metric">
-              <span class="value highlight-pink">{{
-                campaign.metrics.opened.value
-              }}</span>
-              <span class="label"
-                >Opened
-                <span class="percentage"
-                  >{{ campaign.metrics.opened.percentage }}%</span
-                ></span
-              >
-            </div>
-            <div class="metric">
-              <span class="value highlight-blue">{{
-                campaign.metrics.replied.value
-              }}</span>
-              <span class="label"
-                >Replied
-                <span class="percentage"
-                  >{{ campaign.metrics.replied.percentage }}%</span
-                ></span
-              >
-            </div>
-            <div class="metric">
-              <span class="value highlight-green">{{
-                campaign.metrics.positive.value
-              }}</span>
-              <span class="label"
-                >Positive Reply
-                <img src="@/assets/info.svg" alt="Info" />
-              </span>
-            </div>
-          </div>
-          <div class="actions">
-            <button class="action-btn">
-              <img src="@/assets/info-circle.svg" alt="Info" />
-            </button>
-            <button class="action-btn">
-              <img src="@/assets/edit.svg" alt="Edit" />
-            </button>
-            <button class="action-btn">
-              <img src="@/assets/more.svg" alt="More" />
-            </button>
           </div>
         </div>
       </div>
@@ -127,7 +128,6 @@ export default {
 
 <style scoped>
 .campaigns {
-  padding: 24px;
   background: #fff;
   height: 100%;
   display: flex;
@@ -135,15 +135,15 @@ export default {
 }
 
 .campaigns-header {
-  margin-bottom: 24px;
-  flex-shrink: 0; /* Prevent header from shrinking */
+  padding: 14px;
+  border-bottom: 1px solid #e1e3ef;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 }
 
 .title-section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
 }
 
 .title-section h1 {
@@ -161,27 +161,30 @@ export default {
   width: 240px;
   padding: 8px 16px;
   border: 1px solid #e5e7eb;
-  border-radius: 8px;
+  border-radius: 5px;
   font-size: 14px;
 }
 
 .add-campaign {
-  background: #757ae9;
+  background: #6e58f1;
   color: white;
   border: none;
   padding: 8px 16px;
-  border-radius: 8px;
+  border-radius: 5px;
   font-size: 14px;
   cursor: pointer;
+}
+
+.table-container {
+  padding: 27px;
 }
 
 .table-header {
   display: flex;
   padding: 12px 24px;
-  background: #f7f8fe;
-  border-radius: 8px;
+  background: #e9ebf9;
   font-size: 14px;
-  color: #666;
+  color: #686b8a;
   font-weight: 500;
 }
 
