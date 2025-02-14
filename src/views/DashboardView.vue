@@ -46,7 +46,7 @@
           </a>
         </nav>
 
-        <div class="sidebar-footer">
+        <div>
           <a href="#" class="nav-item">
             <img src="@/assets/slack.svg" alt="" />
             <span>Join Slack Community</span>
@@ -65,11 +65,12 @@
             Scrape verified emails straight from LinkedIn using our Sales
             Navigator lead extractor. Download the extension and kick off!
           </p>
-          <!-- <img
+
+          <img
             src="@/assets/leads-illustration.svg"
             alt="Leads illustration"
             class="illustration"
-          /> -->
+          />
           <button class="add-chrome-btn">Add to Chrome</button>
         </div>
       </main>
@@ -187,6 +188,7 @@ export default {
   text-decoration: none;
   font-size: 14px;
   margin: 0px;
+  font-weight: 400;
 }
 
 .nav-item.active {
@@ -202,13 +204,20 @@ export default {
 
 .main-content {
   flex: 1;
-  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .welcome-section {
-  max-width: 800px;
+  max-width: 600px;
   margin: 0 auto;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .welcome-section h1 {
@@ -225,8 +234,7 @@ export default {
 }
 
 .illustration {
-  width: 100%;
-  max-width: 600px;
+  max-width: 500px;
   margin-bottom: 32px;
 }
 
