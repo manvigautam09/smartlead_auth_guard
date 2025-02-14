@@ -25,7 +25,10 @@
             <span class="credit-total">/ 90,000</span>
           </div>
           <div class="credit-bar">
-            <div class="credit-progress" style="width: 93%"></div>
+            <div
+              class="credit-progress"
+              style="width: 93%; background: #dd9553"
+            ></div>
           </div>
         </div>
         <div class="credit-item">
@@ -35,7 +38,10 @@
             <span class="credit-total">/ 90,000</span>
           </div>
           <div class="credit-bar">
-            <div class="credit-progress" style="width: 27%"></div>
+            <div
+              class="credit-progress"
+              style="width: 27%; background: #6ccb4b"
+            ></div>
           </div>
         </div>
         <a href="#" class="get-credits">Get credits</a>
@@ -190,9 +196,8 @@ export default {
 }
 
 .credit-progress {
-  height: 100%;
-  background: #dd9553;
-  border-radius: 2px;
+  height: 10px;
+  border-radius: 1px;
 }
 
 .get-credits {
