@@ -30,12 +30,10 @@ export default createStore({
       );
 
       if (user) {
-        // Create a sanitized user object without the password
         const userWithoutPassword = { email: user.email };
         commit("setUser", userWithoutPassword);
-
-        // Set authentication cookie
         setCookie("auth_token", JSON.stringify(userWithoutPassword));
+        localStorage.setItem("showBanner", "true");
         return Promise.resolve(true);
       }
       return Promise.reject("Invalid credentials");

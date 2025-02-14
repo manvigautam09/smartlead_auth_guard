@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard">
-    <PromoBanner v-if="showBanner" @close="showBanner = false" />
+    <PromoBanner v-if="showBanner" @close="handleCloseBanner" />
     <header class="header">
       <div class="header-left">
         <img src="@/assets/logo.svg" alt="Smartlead.ai" class="logo" />
@@ -88,10 +88,14 @@ export default {
   },
   data() {
     return {
-      showBanner: true,
+      showBanner: localStorage.getItem("showBanner") === "true",
     };
   },
   methods: {
+    handleCloseBanner() {
+      this.showBanner = false;
+      localStorage.setItem("showBanner", "false");
+    },
     handleLogout() {
       this.$store.dispatch("logout");
       this.$router.push("/login");
