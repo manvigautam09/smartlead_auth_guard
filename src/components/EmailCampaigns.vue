@@ -2,7 +2,7 @@
   <div class="campaigns">
     <div class="campaigns-header">
       <div class="title-section">
-        <h1>All Campaigns (24)</h1>
+        <h1>All Campaigns ({{ campaigns.length }})</h1>
         <div class="search-box">
           <input type="text" placeholder="Search Campaigns" />
           <button class="add-campaign">+ Add Campaign</button>
@@ -113,43 +113,13 @@
 </template>
 
 <script>
+import { campaigns } from "@/constants/campaigns";
+
 export default {
   name: "EmailCampaigns",
   data() {
     return {
-      campaigns: [
-        {
-          id: 1,
-          name: "SW Zero Personalisation 1",
-          status: "Sent",
-          date: "15 Apr 2023",
-          sequences: "3 Sequences",
-          progress: 30,
-          metrics: {
-            sent: 520,
-            clicked: { value: 39, percentage: 19.6 },
-            opened: { value: 202, percentage: 39.8 },
-            replied: { value: 4, percentage: 12.4 },
-            positive: { value: 0, percentage: 0.0 },
-          },
-        },
-        {
-          id: 2,
-          name: "Untitled Campaign",
-          status: "Drafted",
-          date: "13 Apr 2023",
-          sequences: "5 Sequences",
-          progress: 0,
-          metrics: {
-            sent: 0,
-            clicked: { value: 0, percentage: 0.0 },
-            opened: { value: 0, percentage: 0.0 },
-            replied: { value: 0, percentage: 0.0 },
-            positive: { value: 0, percentage: 0.0 },
-          },
-        },
-        // Add more campaign objects as needed
-      ],
+      campaigns,
     };
   },
 };
@@ -271,9 +241,12 @@ export default {
 .metrics {
   display: flex;
   gap: 40px;
+  min-width: 600px;
+  justify-content: space-between;
 }
 
 .metric {
+  width: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
