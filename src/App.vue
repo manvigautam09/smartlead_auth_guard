@@ -1,8 +1,4 @@
 <template>
-  <nav v-if="isAuthenticated">
-    <router-link to="/login">Login</router-link> |
-    <router-link to="/dashboard">Dashboard</router-link>
-  </nav>
   <router-view />
 </template>
 
