@@ -83,9 +83,8 @@
           <p>Master Inbox content coming soon...</p>
         </div>
 
-        <div v-else-if="currentTab === 'campaigns'" class="tab-content">
-          <h1>Email Campaigns</h1>
-          <p>Email Campaigns content coming soon...</p>
+        <div v-else-if="currentTab === 'campaigns'" class="campaigns-content">
+          <EmailCampaigns />
         </div>
       </main>
     </div>
@@ -94,11 +93,13 @@
 
 <script>
 import PromoBanner from "@/components/PromoBanner.vue";
+import EmailCampaigns from "@/components/EmailCampaigns.vue";
 
 export default {
   name: "DashboardView",
   components: {
     PromoBanner,
+    EmailCampaigns,
   },
   data() {
     return {
@@ -309,5 +310,11 @@ export default {
 .tab-content p {
   color: #666;
   font-size: 16px;
+}
+
+.campaigns-content {
+  width: 100%;
+  height: 100%;
+  background: #fff;
 }
 </style>
