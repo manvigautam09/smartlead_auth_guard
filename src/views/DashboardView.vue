@@ -23,9 +23,7 @@
         <button class="gift-btn">
           <img src="@/assets/gift.svg" alt="Gift" />
         </button>
-        <div class="user-profile">
-          <img src="@/assets/avatar.svg" alt="User avatar" />
-        </div>
+        <UserDropdown />
       </div>
     </header>
 
@@ -94,12 +92,14 @@
 <script>
 import PromoBanner from "@/components/PromoBanner.vue";
 import EmailCampaigns from "@/components/EmailCampaigns.vue";
+import UserDropdown from "@/components/UserDropdown.vue";
 
 export default {
   name: "DashboardView",
   components: {
     PromoBanner,
     EmailCampaigns,
+    UserDropdown,
   },
   data() {
     return {
