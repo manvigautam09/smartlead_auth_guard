@@ -341,8 +341,8 @@ export default {
 }
 
 .campaigns-list {
-  flex: 1;
-  overflow-y: auto;
   min-height: 0; /* Important for Firefox */
+  overflow: auto;
+  max-height: 600px;
 }
 </style>
