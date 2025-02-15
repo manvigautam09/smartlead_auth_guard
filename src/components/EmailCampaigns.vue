@@ -34,7 +34,7 @@
           class="campaign-row"
         >
           <div class="checkbox-col">
-            <input type="checkbox" />
+            <input type="checkbox" class="custom-checkbox" />
           </div>
 
           <div class="details-col">
@@ -77,11 +77,17 @@
               <div class="campaign-details">
                 <div class="campaign-name">
                   {{ campaign.name }}
-                  <img src="@/assets/external-link.svg" alt="Open" />
+                  <img
+                    src="@/assets/external-link.svg"
+                    alt="Open"
+                    class="external-link"
+                  />
                 </div>
                 <div class="campaign-meta">
-                  {{ campaign.status }} on {{ campaign.date }} |
-                  {{ campaign.sequences }} Sequences
+                  <span class="status" :class="campaign.status.toLowerCase()">{{
+                    campaign.status
+                  }}</span>
+                  on {{ campaign.date }} | {{ campaign.sequences }}
                 </div>
               </div>
             </div>
@@ -291,13 +297,22 @@ export default {
   padding: 16px 24px;
   border-bottom: 1px solid #e5e7eb;
   align-items: center;
-  background: #fff; /* Ensure white background when scrolling */
+  background: #fff;
+}
+
+.custom-checkbox {
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid #d0d3e5;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .campaign-info {
   display: flex;
   align-items: center;
   gap: 16px;
+  padding-right: 24px;
 }
 
 .progress-circle {
@@ -330,7 +345,7 @@ export default {
 .campaign-details {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
 .campaign-name {
@@ -338,23 +353,49 @@ export default {
   align-items: center;
   gap: 8px;
   color: #1a1a1a;
+  font-size: 14px;
   font-weight: 500;
+}
+
+.external-link {
+  width: 16px;
+  height: 16px;
+  opacity: 0.6;
 }
 
 .campaign-meta {
   font-size: 12px;
-  color: #666;
+  color: #686b8a;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.status {
+  font-weight: 500;
+}
+
+.status.sent {
+  color: #5eca39;
+}
+.status.drafted {
+  color: #686b8a;
+}
+.status.paused {
+  color: #dd9553;
+}
+.status.stopped {
+  color: #cb4b4b;
 }
 
 .metrics {
   display: flex;
   gap: 40px;
-  min-width: 600px;
-  justify-content: space-between;
+  padding: 0 24px;
 }
 
 .metric {
-  width: 100px;
+  min-width: 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -365,6 +406,7 @@ export default {
   font-size: 16px;
   font-weight: 600;
   color: #1a1a1a;
+  line-height: 24px;
 }
 
 .highlight-purple {
@@ -382,32 +424,38 @@ export default {
 
 .label {
   font-size: 12px;
-  color: #666;
+  color: #686b8a;
   display: flex;
   align-items: center;
   gap: 4px;
+  line-height: 18px;
 }
 
 .percentage {
-  color: #999;
+  color: #9699ab;
 }
 
 .actions {
   display: flex;
-  gap: 8px;
+  gap: 4px;
+  margin-left: auto;
 }
 
 .action-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: none;
   border: none;
-  padding: 8px;
+  border-radius: 4px;
   cursor: pointer;
+  padding: 0;
 }
 
-.report-col {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.action-btn:hover {
+  background: #f7f8fe;
 }
 
 .campaigns-list {
