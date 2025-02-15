@@ -106,7 +106,7 @@ export default {
   data() {
     return {
       showBanner: localStorage.getItem("showBanner") === "true",
-      currentTab: "campaigns",
+      currentTab: "leads",
       tabs: [
         {
           id: "leads",
