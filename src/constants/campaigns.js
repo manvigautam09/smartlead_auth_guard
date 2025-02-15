@@ -35,7 +35,7 @@ export const campaigns = [
     status: "Sent",
     date: "15 Apr 2023",
     sequences: "3 Sequences",
-    progress: 30,
+    progress: 50,
     metrics: {
       sent: 520,
       clicked: { value: 39, percentage: 19.6 },
@@ -65,7 +65,7 @@ export const campaigns = [
     status: "Sent",
     date: "15 Apr 2023",
     sequences: "3 Sequences",
-    progress: 30,
+    progress: 40,
     metrics: {
       sent: 520,
       clicked: { value: 39, percentage: 19.6 },
@@ -95,7 +95,7 @@ export const campaigns = [
     status: "Paused",
     date: "15 Apr 2023",
     sequences: "3 Sequences",
-    progress: 30,
+    progress: 60,
     metrics: {
       sent: 520,
       clicked: { value: 39, percentage: 19.6 },
@@ -110,7 +110,7 @@ export const campaigns = [
     status: "Sent",
     date: "15 Apr 2023",
     sequences: "3 Sequences",
-    progress: 30,
+    progress: 80,
     metrics: {
       sent: 520,
       clicked: { value: 39, percentage: 19.6 },

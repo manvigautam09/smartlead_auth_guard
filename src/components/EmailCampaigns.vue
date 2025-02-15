@@ -39,8 +39,28 @@
 
           <div class="details-col">
             <div class="campaign-info">
-              <div class="progress-circle" :data-progress="campaign.progress">
-                {{ campaign.progress }}%
+              <div class="progress-circle">
+                <svg width="40" height="40" viewBox="0 0 40 40">
+                  <circle
+                    cx="20"
+                    cy="20"
+                    r="16"
+                    fill="none"
+                    stroke="#E9EBF9"
+                    stroke-width="4"
+                  />
+                  <circle
+                    cx="20"
+                    cy="20"
+                    r="16"
+                    fill="none"
+                    stroke="#5ECA39"
+                    stroke-width="4"
+                    stroke-dasharray="100.53"
+                    :stroke-dashoffset="calculateOffset(campaign.progress)"
+                  />
+                </svg>
+                <span class="progress-text">{{ campaign.progress }}%</span>
               </div>
               <div class="campaign-details">
                 <div class="campaign-name">
@@ -131,6 +151,13 @@ export default {
     return {
       campaigns: getCampaigns(),
     };
+  },
+  methods: {
+    calculateOffset(progress) {
+      const circumference = 2 * Math.PI * 16; // 2πr where r=16
+      const offset = circumference - (progress / 100) * circumference;
+      return offset;
+    },
   },
 };
 </script>
@@ -253,15 +280,28 @@ export default {
 }
 
 .progress-circle {
+  position: relative;
   width: 40px;
   height: 40px;
-  border-radius: 50%;
-  background: #f7f8fe;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.progress-circle svg {
+  transform: rotate(-90deg);
+  overflow: visible;
+}
+
+.progress-circle circle {
+  transition: stroke-dashoffset 0.3s ease;
+}
+
+.progress-text {
+  position: absolute;
   font-size: 12px;
-  color: #666;
+  color: #686b8a;
+  font-weight: 500;
 }
 
 .campaign-details {
