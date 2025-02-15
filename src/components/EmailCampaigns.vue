@@ -84,10 +84,11 @@
                   />
                 </div>
                 <div class="campaign-meta">
-                  <span class="status" :class="campaign.status.toLowerCase()">{{
-                    campaign.status
-                  }}</span>
-                  on {{ campaign.date }} | {{ campaign.sequences }}
+                  <span class="status" :class="campaign.status.toLowerCase()"
+                    >•</span
+                  >
+                  {{ campaign.status }} on {{ campaign.date }} |
+                  {{ campaign.sequences }}
                 </div>
               </div>
             </div>
@@ -96,50 +97,44 @@
           <div class="report-col">
             <div class="metrics">
               <div class="metric">
-                <span class="value">{{ campaign.metrics.sent }}</span>
+                <span class="value highlight-purple">{{
+                  campaign.metrics.sent
+                }}</span>
                 <span class="label">Sent</span>
               </div>
               <div class="metric">
-                <span class="value highlight-purple">{{
-                  campaign.metrics.clicked.value
-                }}</span>
-                <span class="label"
-                  >Clicked
+                <span class="value highlight-yellow"
+                  >{{ campaign.metrics.clicked.value }}
                   <span class="percentage"
                     >{{ campaign.metrics.clicked.percentage }}%</span
                   ></span
                 >
+                <span class="label">Clicked</span>
               </div>
               <div class="metric">
-                <span class="value highlight-pink">{{
-                  campaign.metrics.opened.value
-                }}</span>
-                <span class="label"
-                  >Opened
+                <span class="value highlight-pink"
+                  >{{ campaign.metrics.opened.value }}
                   <span class="percentage"
                     >{{ campaign.metrics.opened.percentage }}%</span
                   ></span
                 >
+                <span class="label">Opened</span>
               </div>
               <div class="metric">
-                <span class="value highlight-blue">{{
-                  campaign.metrics.replied.value
-                }}</span>
-                <span class="label"
-                  >Replied
+                <span class="value highlight-blue"
+                  >{{ campaign.metrics.replied.value }}
                   <span class="percentage"
                     >{{ campaign.metrics.replied.percentage }}%</span
                   ></span
                 >
+                <span class="label">Replied</span>
               </div>
               <div class="metric">
-                <span class="value highlight-green">{{
-                  campaign.metrics.positive.value
-                }}</span>
-                <span class="label"
-                  >Positive Reply
-                  <img src="@/assets/info.svg" alt="Info" />
-                </span>
+                <span class="value highlight-green"
+                  >{{ campaign.metrics.positive.value }}
+                  <img src="@/assets/info.svg" alt="Info"
+                /></span>
+                <span class="label">Positive Reply </span>
               </div>
             </div>
             <div class="actions">
@@ -179,7 +174,7 @@ export default {
     getStatusColor(status) {
       const colors = {
         Sent: "#5ECA39",
-        Drafted: "none",
+        Drafted: "#B7BBD4",
         Paused: "#DD9553",
         Stopped: "#CB4B4B",
       };
@@ -290,6 +285,7 @@ export default {
 
 .report-col {
   flex: 2;
+  display: flex;
 }
 
 .campaign-row {
@@ -352,7 +348,7 @@ export default {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #1a1a1a;
+  color: #6e58f1;
   font-size: 14px;
   font-weight: 500;
 }
@@ -400,56 +396,62 @@ export default {
   flex-direction: column;
   align-items: center;
   gap: 4px;
+  color: #282b42;
 }
 
 .value {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 600;
-  color: #1a1a1a;
-  line-height: 24px;
 }
 
 .highlight-purple {
-  color: #757ae9;
+  color: #6e58f1;
 }
+.highlight-yellow {
+  color: #eeb728;
+}
+
 .highlight-pink {
-  color: #ff4d4d;
+  color: #bf51c1;
 }
 .highlight-blue {
-  color: #00b3ff;
+  color: #51c1c1;
 }
 .highlight-green {
-  color: #00b67a;
+  color: #2cdb28;
 }
 
 .label {
   font-size: 12px;
-  color: #686b8a;
+  color: #282b42;
   display: flex;
   align-items: center;
   gap: 4px;
   line-height: 18px;
+  opacity: 0.6;
 }
 
 .percentage {
-  color: #9699ab;
+  font-size: 12px;
+  color: #282b42;
+  opacity: 0.6;
 }
 
 .actions {
   display: flex;
-  gap: 4px;
+  gap: 15px;
   margin-left: auto;
 }
 
 .action-btn {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: none;
-  border: none;
-  border-radius: 4px;
+  background: #fafaff;
+  border: solid 1px #e5e7f9;
+  border-radius: 3px;
   cursor: pointer;
   padding: 0;
 }
