@@ -54,7 +54,7 @@
                     cy="20"
                     r="16"
                     fill="none"
-                    stroke="#5ECA39"
+                    :stroke="getStatusColor(campaign.status)"
                     stroke-width="4"
                     stroke-dasharray="100.53"
                     :stroke-dashoffset="calculateOffset(campaign.progress)"
@@ -169,6 +169,15 @@ export default {
       const circumference = 2 * Math.PI * 16; // 2πr where r=16
       const offset = circumference - (progress / 100) * circumference;
       return offset;
+    },
+    getStatusColor(status) {
+      const colors = {
+        Sent: "#5ECA39",
+        Drafted: "none",
+        Paused: "#DD9553",
+        Stopped: "#CB4B4B",
+      };
+      return colors[status];
     },
   },
 };
