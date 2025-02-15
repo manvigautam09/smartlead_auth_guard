@@ -60,7 +60,19 @@
                     :stroke-dashoffset="calculateOffset(campaign.progress)"
                   />
                 </svg>
-                <span class="progress-text">{{ campaign.progress }}%</span>
+
+                <span v-if="campaign.status === 'Sent'" class="progress-text"
+                  >{{ campaign.progress }}%</span
+                >
+
+                <img
+                  v-else
+                  class="progress-text"
+                  :src="
+                    require(`@/assets/${campaign.status.toLowerCase()}.svg`)
+                  "
+                  :alt="campaign.status"
+                />
               </div>
               <div class="campaign-details">
                 <div class="campaign-name">
@@ -286,6 +298,8 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: #f7f8fe;
+  border-radius: 50%;
 }
 
 .progress-circle svg {
