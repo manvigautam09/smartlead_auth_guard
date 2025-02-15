@@ -18,10 +18,12 @@
     </div>
     <div class="table-container">
       <div class="table-header">
-        <div class="checkbox-col">
-          <input type="checkbox" />
+        <div class="table-campaign">
+          <div class="checkbox-col">
+            <input type="checkbox" />
+          </div>
+          <div class="details-col">Campaign Details</div>
         </div>
-        <div class="details-col">Campaign Details</div>
         <div class="report-col">Report</div>
       </div>
 
@@ -214,17 +216,22 @@ export default {
   display: flex;
   padding: 12px 24px;
   background: #e9ebf9;
-  font-size: 14px;
+  font-size: 16px;
   color: #686b8a;
-  font-weight: 500;
+  font-weight: 600;
 }
 
+.table-campaign {
+  display: flex;
+  flex: 1;
+}
 .checkbox-col {
   width: 40px;
 }
 
 .details-col {
   flex: 1;
+  display: flex;
 }
 
 .report-col {
